@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Config;
 use Tests\TestCase;
 
 class FacadesTest extends TestCase
@@ -11,10 +12,11 @@ class FacadesTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_example(): void
+    public function test_config(): void
     {
-        $response = $this->get('/');
+        $firstName1 = config('contoh.author.first');
+        $firstName2 = Config::get('contoh.author.first');
 
-        $response->assertStatus(200);
+        self::assertEquals($firstName1, $firstName2);
     }
 }

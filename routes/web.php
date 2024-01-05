@@ -16,3 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello', function () {
+    return "Hello World!";
+});
+
+Route::redirect('/yt', '/hello');
+
+Route::fallback(function () {
+    return "Ga ada bang";
+});
+
